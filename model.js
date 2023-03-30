@@ -1,6 +1,6 @@
 
 const div = document.querySelector('.threejs');
-const greenRadio = document.querySelector('input[value="green"]');
+//const greenRadio = document.querySelector('input[value="green"]');
 let mesh;
 let material
 
@@ -123,7 +123,37 @@ var vertices = [
     //material = new THREE.MeshBasicMaterial({ color: 0xD5A6BD });
 
     document.forms[0].addEventListener('change', (e)=> {
-            material.color.set(e.target.value)
+      const value = e.target.value;
+  if (value === "on") {
+  directionalLight.visible = true;
+  spotLight.visible= true;
+  
+  } else if (value === "off") {
+  directionalLight.visible = false;
+  spotLight.visible= false;
+  }else{
+material.color.set(value)}
+            renderer.render(scene, camera)
+        //pyramid.style.borderBottomColor = 'green';
+        })
+
+    // const sveton =document.querySelector('.ons');
+    // const svetoff =document.querySelector('.offs');
+        
+    // sveton.addEventListener('change', (e)=>{
+
+    // })
+
+document.forms[0].addEventListener('change', (e)=> {
+  const value = e.target.value;
+  if (value === "on") {
+  directionalLight.visible = true;
+  spotLight.visible= true;
+  
+  } else if (value === "off") {
+  directionalLight.visible = false;
+  spotLight.visible= false;
+  }
             renderer.render(scene, camera)
         //pyramid.style.borderBottomColor = 'green';
         })
@@ -161,6 +191,10 @@ const spotLightHelper = new THREE.SpotLightHelper(spotLight);
 scene.add(spotLight);
 scene.add(spotLight.target);
 scene.add(spotLightHelper);
+
+
+const vibor=document.querySelector('svet')
+
 
   camera.position.z = 5;
 function animate() {
